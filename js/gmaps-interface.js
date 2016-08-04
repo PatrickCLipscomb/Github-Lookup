@@ -11,8 +11,8 @@ $(document).ready(function() {
   var infoWindow = basemap.generateInfoWindow();
   var neighborhood = basemap.generateNeighborhood(infoWindow, mapObject);
   var choropleth = basemap.generateCrimeChorpleth()
+  var heatmap = basemap.generateAssultHeatmap();
   var crimePointMap;
-
   $('#neighborhood-toggleTrue').click(function() {
     basemap.showneighborhood(neighborhood, mapObject)
     $('#neighborhood-toggleFalse').show();
@@ -50,6 +50,7 @@ $(document).ready(function() {
     $('#choropleth-toggleTrue').show();
     $('#choropleth-toggleFalse').hide();
   });
-
-
+  $('#heatmap-toggleTrue').click(function() {
+    heatmap.setMap(mapObject)
+  });
 });
