@@ -37,10 +37,10 @@ pdxMap.prototype.generateNeighborhood = function(infoWindow, mapObject){
     infoWindow.open(mapObject, anchor);
   });
   neighborhood.setStyle({
-    strokeColor: '#2a2a2a',
-    strokeOpacity: '0.7',
+    strokeColor: '#4C4CA6',
+    strokeOpacity: '0.8',
     fillOpacity: '0.2',
-    strokeWeight: 0.6
+    strokeWeight: .8
   });
   return neighborhood
 };
@@ -61,6 +61,40 @@ pdxMap.prototype.generateCrimePoints = function(crime){
       where: "'Major Offense Type' = '" + crime + "'",
     },
     styleID: 2
+  });
+  return crimeMap
+};
+
+pdxMap.prototype.generateCrimeChorpleth = function(crime){
+  var crimeMap = new google.maps.FusionTablesLayer({
+    query: {
+      select: 'geometry',
+      from: '1mJ1mYg1JF7yyZ3_Er2CyK1n8jJoQv-OFy2HXourz',
+    },
+    styles: [{
+            polygonOptions: {
+              fillColor: '#ff9999',
+              fillOpacity: 0.5
+            }
+          }, {
+            where: 'Crime > 500',
+            polygonOptions: {
+              fillColor: '#ff6666',
+              fillOpacity: .5
+            }
+          }, {
+            where: 'Crime > 1500',
+            polygonOptions: {
+              fillColor: '#b20000',
+              fillOpacity: .5
+            }
+          }, {
+            where: 'Crime > 2000',
+            polygonOptions: {
+              fillColor: '#7f0000',
+              fillOpacity: .5
+            }
+          }]
   });
   return crimeMap
 };

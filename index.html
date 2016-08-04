@@ -20,26 +20,51 @@
   </head>
   <body>
 
-    <header class="nav-bar">
-      <button type="button" class="btn btn-lg btn-info" id="neighborhood-toggleTrue">Neighborhood Show</button>
-      <button type="button" class="btn btn-lg btn-info" id="neighborhood-toggleFalse">Neighborhood Hide</button>
-      <button type="button" class="btn btn-lg btn-info" id="crimeMap-toggleTrue">crime Show</button>
-      <button type="button" class="btn btn-lg btn-info" id="crimeMap-toggleFalse">crime Hide</button>
-      <form id="crime-form" class="">
-        <div class="dropdown">
-          <select class="" id="crime-selection" >
-            <option value="Prostitution">Prostitution</option>
-            <option value="Robbery">Robbery</option>
-            <option value="Trespass">Trespass</option>
-            <option value="Fraud">Fraud</option>
-            <option value="Homicide">Homicide</option>
-          </select>
+    <header>
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand">Portland Hoodlnd</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li><button type="button" class="btn btn-lg btn-info" id="neighborhood-toggleTrue">Neighborhood Show</button></li>
+            <li><button type="button" class="btn btn-lg btn-info" id="neighborhood-toggleFalse">Neighborhood Hide</button></li>
+            <li><button type="button" class="btn btn-lg btn-info" id="choropleth-toggleTrue">Choropleth Show</button></li>
+            <li><button type="button" class="btn btn-lg btn-info" id="choropleth-toggleFalse">Choropleth Hide</button></li>
+            <li><form id="crime-form" class="form-inline">
+              <div class="dropdown form-group">
+                <select class="form-control" id="crime-selection" >
+                  <option value="Prostitution">Prostitution</option>
+                  <option value="Robbery">Robbery</option>
+                  <option value="Trespass">Trespass</option>
+                  <option value="Fraud">Fraud</option>
+                  <option value="Homicide">Homicide</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-success btn-lg">Show Incidents</button>
+            </form></li>
+            <li><button type="button" class="btn btn-danger btn-lg" id="crimePointMap-toggleFalse">Remove Incidents</button></li>
+            <li><button type="button" class="btn btn-primary btn-lg"  data-toggle="modal" data-target="#myModal">
+            Show Crime Data</button></li>
+          </ul>
         </div>
-        <button type="submit" class="btn btn-success btn-sm">Set Crime Filter</button>
-      </form>
-      <button type="button" class="btn btn-danger btn-sm" id="crimePointMap-toggleFalse">Remove Crime</button>
+      </nav>
     </header>
-
+    <div class="modal fade" id="myModal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title">Modal title</h4>
+          </div>
+          <div class="modal-body">
+            <iframe width="500" height="300" scrolling="no" frameborder="no" src="https://fusiontables.google.com/embedviz?containerId=googft-gviz-canvas&amp;q=select+col3%2C+count()+from+1UiNUPWYWE8A5xrMB1rL5xDeRQC6KUK7Te4aHZP6U+group+by+col3+order+by+count()+desc+limit+30&amp;viz=GVIZ&amp;t=PIE&amp;uiversion=2&amp;gco_forceIFrame=true&amp;gco_hasLabelsColumn=true&amp;gco_useFirstColumnAsDomain=true&amp;gco_legacyScatterChartLabels=true&amp;gco_is3D=false&amp;gco_pieHole=0&amp;gco_booleanRole=certainty&amp;gco_hAxis=%7B%22useFormatFromData%22%3Atrue%2C+%22viewWindow%22%3A%7B%22max%22%3Anull%2C+%22min%22%3Anull%7D%2C+%22minValue%22%3Anull%2C+%22maxValue%22%3Anull%7D&amp;gco_vAxes=%5B%7B%22useFormatFromData%22%3Atrue%2C+%22viewWindow%22%3A%7B%22max%22%3Anull%2C+%22min%22%3Anull%7D%2C+%22minValue%22%3Anull%2C+%22maxValue%22%3Anull%7D%2C%7B%22useFormatFromData%22%3Atrue%2C+%22viewWindow%22%3A%7B%22max%22%3Anull%2C+%22min%22%3Anull%7D%2C+%22minValue%22%3Anull%2C+%22maxValue%22%3Anull%7D%5D&amp;width=500&amp;height=300"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
     <div id="map"></div>
    <!-- <script>
      var map;

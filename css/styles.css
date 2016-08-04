@@ -6,7 +6,11 @@ html, body {
       #map {
         height: 100%;
       }
-      
+
 #neighborhood-toggleFalse{
   display: none;
+}
+
+.crime-form {
+  margin-left: 400px;
 }

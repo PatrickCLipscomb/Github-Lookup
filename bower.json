@@ -1,9 +1,9 @@
 {
-  "name": "weather",
+  "name": "maps",
   "description": "",
   "main": "gulpfile.js",
   "license": "ISC",
-  "homepage": "",
+  "homepage": "https://github.com/PatrickCLipscomb/GoogleMapsProject",
   "ignore": [
     "**/.*",
     "node_modules",
