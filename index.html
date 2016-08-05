@@ -4,68 +4,35 @@
     <link rel="stylesheet" href="build/css/vendor.css">
     <script src="build/js/vendor.min.js"></script>
     <script type="text/javascript" src="build/js/app.js"></script>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVzjfwJiDH8Qf6fWeY4fhROBMyjik1Zg8&libraries=visualization"></script>
-
-    <title>Maps</title>
-    <style>
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      #map {
-        height: 100%;
-      }
-    </style>
+    <title>Github Lookup</title>
   </head>
   <body>
-
-    <header>
-      <nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <a class="navbar-brand">Portland Hoodlnd</a>
+    <div class="row container">
+      <div class="col-sm-4 col-sm-offset-4">
+        <form id="username-form">
+          <h3>Creep on someone's <span class="type">Github</span></h3>
+          <div class="form-group">
+            <label for="username">Github Username</label>
+            <input type="text" id="username" name="username" class="form-control">
           </div>
-          <ul class="nav navbar-nav">
-            <li><button type="button" class="btn btn-lg btn-info" id="neighborhood-toggleTrue">Neighborhood Show</button></li>
-            <li><button type="button" class="btn btn-lg btn-info" id="neighborhood-toggleFalse">Neighborhood Hide</button></li>
-            <li><button type="button" class="btn btn-lg btn-info" id="choropleth-toggleTrue">Choropleth Show</button></li>
-            <li><button type="button" class="btn btn-lg btn-info" id="choropleth-toggleFalse">Choropleth Hide</button></li>
-            <li><form id="crime-form" class="form-inline">
-              <div class="dropdown form-group">
-                <select class="form-control" id="crime-selection" >
-                  <option value="Prostitution">Prostitution</option>
-                  <option value="Robbery">Robbery</option>
-                  <option value="Trespass">Trespass</option>
-                  <option value="Fraud">Fraud</option>
-                  <option value="Homicide">Homicide</option>
-                </select>
-              </div>
-              <button type="submit" class="btn btn-success btn-lg">Show Incidents</button>
-            </form></li>
-            <li><button type="button" class="btn btn-danger btn-lg" id="crimePointMap-toggleFalse">Remove Incidents</button></li>
-            <li><button type="button" class="btn btn-primary btn-lg"  data-toggle="modal" data-target="#myModal">
-            Show Crime Data</button></li>
-            <li><button type="button" class="btn btn-danger btn-lg" id="heatmap-toggleTrue">Show Heatmap?</button></li>
-          </ul>
-        </div>
-      </nav>
-    </header>
-    <div class="modal fade" id="myModal">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-            <h4 class="modal-title">Modal title</h4>
-          </div>
-          <div class="modal-body">
-            <iframe width="500" height="300" scrolling="no" frameborder="no" src="https://fusiontables.google.com/embedviz?containerId=googft-gviz-canvas&amp;q=select+col3%2C+count()+from+1UiNUPWYWE8A5xrMB1rL5xDeRQC6KUK7Te4aHZP6U+group+by+col3+order+by+count()+desc+limit+30&amp;viz=GVIZ&amp;t=PIE&amp;uiversion=2&amp;gco_forceIFrame=true&amp;gco_hasLabelsColumn=true&amp;gco_useFirstColumnAsDomain=true&amp;gco_legacyScatterChartLabels=true&amp;gco_is3D=false&amp;gco_pieHole=0&amp;gco_booleanRole=certainty&amp;gco_hAxis=%7B%22useFormatFromData%22%3Atrue%2C+%22viewWindow%22%3A%7B%22max%22%3Anull%2C+%22min%22%3Anull%7D%2C+%22minValue%22%3Anull%2C+%22maxValue%22%3Anull%7D&amp;gco_vAxes=%5B%7B%22useFormatFromData%22%3Atrue%2C+%22viewWindow%22%3A%7B%22max%22%3Anull%2C+%22min%22%3Anull%7D%2C+%22minValue%22%3Anull%2C+%22maxValue%22%3Anull%7D%2C%7B%22useFormatFromData%22%3Atrue%2C+%22viewWindow%22%3A%7B%22max%22%3Anull%2C+%22min%22%3Anull%7D%2C+%22minValue%22%3Anull%2C+%22maxValue%22%3Anull%7D%5D&amp;width=500&amp;height=300"></iframe>
-          </div>
+          <button type="submit" class="btn btn-lg btn-info">See their Repos</button>
+        </form>
+        <button type="button" id="clear">Clear Information</button>
+        <hr>
+        <div class="container">
+          <h3 id="showUser"></h3>
+          <span id="imgUser"></span>
+          <br>
+          <ul class="repositories"></ul>
         </div>
       </div>
+      <div class="col-sm-2 col-sm-offset-2">
+        <h4 class="followers">List of <span class="showUserforFollowers"></span>'s Followers:</h4>
+        <ul class="followers" id="followers"></ul>
+        <hr "followers">
+        <h4 class="followers">List of Users <span class="showUserforFollowers"></span> is following:</h4>
+        <ul class="followers" id="following"></ul>
+      </div>
     </div>
-    <div id="map"></div>
   </body>
 </html>
