@@ -8,7 +8,8 @@ var repoFunction = function(name, response) {
   response.forEach(function(repo) {
     var repoArry = repo.full_name.split('/')
     var repoName = repoArry[1]
-    $('.repositories').append('<li><h4><a href="' + repo.html_url + '">' + repoName + '</a></h4>');
+    var Created_at = repo.created_at.slice(0, 10)
+    $('.repositories').append('<li><h4><a href="' + repo.html_url + '">' + repoName + '</a></h4><p>Created on: ' + Created_at + '</p></li>');
   })
   $('#showRepos').text(response.login);
 };
